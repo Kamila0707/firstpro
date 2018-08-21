@@ -1,0 +1,23 @@
+.filter-table {
+	width: 50%;
+	margin: 100px auto;
+	border-collapse: table-cell;
+
+}
+.filter-row--head > td {
+	border-bottom: 1px solid #e7e7e7;
+	font-weight: 600;
+}
+.filter-column {
+	padding: 10px;
+	color: rgba(0, 0, 0, .6);
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.filter-column.active {
+	color: rgba(0, 0, 255, .5);
+}
+.filter-column.negative {
+	color: rgba(255, 0, 0, 1);
+}

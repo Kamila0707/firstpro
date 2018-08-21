@@ -1,0 +1,71 @@
+<form ng-submit="vm.savePost()">
+  <input type="text" placeholder="Title" ng-model="vm.title" required> 
+  <input type="text" placeholder="Content" ng-model="vm.content" required>
+  <input type="text" placeholder="Author" ng-model="vm.author" required>
+  <input ng-file-model="vm.file" type="file" required>
+
+   <button type="submit">Save</button>
+</form>
+<table>
+	<thead>
+		<tr ng-repeat="post in vm.posts">
+			<td ng-bind="post.title"></td>
+			<td ng-bind="post.content"></td>
+			<td ng-bind="post.author"></td>
+			<td ng-bind="post.date"></td>
+			<td>
+				<button ng-click="vm.makeEditable(post)">Edit</button>	
+				<button ng-click="vm.deletePost(post)">Delete</button>
+				<button ui-sref="post({id: post._id})">More</button>			
+			</td>
+			<td>
+				<img class="post-status" src="../images/like.svg" ng-if="post.liked_users.includes(session)" ng-click="vm.setLike(post._id,$index)">
+				<img class="post-status" src="../images/unlike.svg" ng-click="vm.setLike(post._id,$index)" ng-if="!post.liked_users.includes(session)">
+			</td>
+		</tr>
+		<td>
+			
+		</td>
+	</thead>
+	<tbody>
+		<tr>title 1</tr>
+		<tr>content 1</tr>
+		<tr>author 1</tr>
+		<tr> 1</tr>
+		<tr>
+
+		</tr>
+	</tbody>
+</table>
+ <section class="modal" ng-if="vm.objecToEdit != null;">
+	<div class="modal__backdrop" ng-click="vm.closeModal();"></div>
+	<div class="modal__window">
+		<div class="modal__title">Edit Post</div>
+		<div class="modal__field">
+			<input type="text" class="input input_modal" ng-modal="vm.objecToEdit.title">
+		</div>
+		<div class="modal__field">
+			<input type="text" class="input input_modal" ng-modal="vm.objecToEdit.content">
+		</div>
+
+		<div class="modal__field">
+			<input type="text" class="input input_modal" ng-modal="vm.objecToEdit.author">
+		</div>
+		<div class="modal__field">
+			<button class="button button_modal" ng-click="vm.editPost();">Submit</button>
+		</div>
+	</div>
+	
+</section>
+
+
+<section class="pagination">
+	<div ng-click="vm.prevPage()">
+		<
+	</div>
+	<button class="pagination-item" ng-repeat="page in vm.pages track by $index" ng-bind="page + 1" ng-class="{'active': vm.current_page == page + 1}">
+	</button>
+	<div ng-click="vm.nextPage()">
+		>
+	</div>
+</section>

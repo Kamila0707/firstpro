@@ -1,0 +1,31 @@
+<section class="post-detail">
+  <img class="post-image" ng-src="{{vm.post.link}}">
+  <span class="post-title" ng-bind="vm.post.title">Title 1</span>
+  <span class="post-content" ng-bind="vm.post.content">Content2</span>
+  <div class="post-detail-info">
+    <span class="post-author" ng-bind="vm.post.author">Kamila Oryngaliyeva</span>
+    <span class="post-date" ng-bind="vm.post.date">07.08.1992</span>
+  </div>
+  <form ng-submit="vm.addComment()">
+  	<textarea ng-model="vm.text">
+    </textarea>
+    <button type="submit">Add comment</button>
+  </form>
+  <section class="comment">
+  	<div class="comment-item" ng-repeat = "comment in vm.post.comments">
+  		<span class="comment-author" ng-bind="comment.author_name">Kamila Oryngaliyeva</span>
+  		<span class="comment-text" ng-bind="comment.text">This is very very very useless text, with no meaning.</span>
+  		<span class="comment-date" ng-bind="comment.date | date">13.07.2018</span>
+      <img  ng-if="session == comment.author" ng-click="vm.selectComment($index, comment)" class="comment-logo" src="/images/edit.svg">
+      <img ng-if="session == comment.author" ng-click="vm.deleteComment($index, comment)" class="comment-logo" src="/images/clear-button.svg">
+      <form class="comment-edit" ng-if="vm.currentComment == $index">
+        <textarea class="comment-edit__input" ng-model="vm.currentCommentText">
+        
+        </textarea>
+        <button class="comment-edit__btn">Save</button>
+        <button class="comment-edit__btn" ng-click="vm.cancelComment($index, text)">Cancel</button>
+    
+      </form>
+  	</div>
+  </section>
+</section>

@@ -1,0 +1,29 @@
+<table class="first-table">
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Genre</td>
+			<td>Year</td>
+			<td>Delete</td>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr class="table-row" ng-repeat="movie in vm.movies">
+			
+			<td class="table" ng-bind="movie.name"> 
+				Name
+			</td>
+			<td class="table" ng-bind="movie.genre">
+				Genre
+			</td>
+			<td class="table" ng-bind="movie.year">
+				Year
+			</td>
+			<td>
+				<button class="btn button-table" ng-click="vm.delete($index)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+ 

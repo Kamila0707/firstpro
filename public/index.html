@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="decode">
+<head>
+	<title>Main page</title>
+	<base href="/">
+	<link rel="stylesheet" href="./style/all.css" type="text/css">
+</head>
+<body>
+	<section class="header" ng-controller = 'HeaderCtrl as vm'>
+		<img class="logo" src="/images/search.svg">
+		<div class="header-search">
+		<div class="header-search-inner">
+			<input ng-keyup = "vm.search()" ng-model="vm.search_text" class="header-search__input" type="text">
+			<img class="header-search__icon" src="../images/find.svg">
+		</div>
+		<div class="header-search-list" ng-if="vm.search_result.length > 0">
+			<li class="header-search-list__item">Title 1</li>
+			<li class="header-search-list__item">Title 2</li>
+			<li class="header-search-list__item">Title 3</li>
+		</div>
+		</div>
+		<div class="header-nav">
+			<li class="header-nav__item">Home</li>
+			<li class="header-nav__item">Profile</li>
+			<li class="header-nav__item">Filter</li>
+		</div>
+		<div class="header-action">
+			<button class="btn button--auth" ui-sref="login" ng-if="!session">Login</button>
+			<button class="btn button--auth" ng-if="!session" ui-sref="registration">Registration</button>
+			<button class="btn button--auth" ng-if="session" ng-click="vm.logout()">Log out</button>
+		</div>
+	</section>
+	 
+  <ui-view>
+  
+  </ui-view>
+
+<script type="text/javascript" src="/js/vendor/ng.min.js"></script>
+<script type="text/javascript" src="/js/vendor/ng-route.min.js"></script>
+<script type="text/javascript" src="/js/vendor/ng-cookies.min.js"></script>
+<script type="text/javascript" src="/app.js"></script>
+<script type="text/javascript" src="/js/filters/filter.js"></script>
+<script type="text/javascript" src="/js/vendor/file.js"></script>
+<script type="text/javascript" src="/js/controllers/home.js"></script>
+<script type="text/javascript" src="/js/controllers/login.js"></script>
+<script type="text/javascript" src="/js/controllers/profile.js"></script>
+<script type="text/javascript" src="/js/controllers/stack.js"></script>
+<script type="text/javascript" src="/js/controllers/post.js"></script>
+<script type="text/javascript" src="/js/controllers/header.js"></script>
+<script type="text/javascript" src="/js/controllers/registration.js"></script>
+<script type="text/javascript" src="/js/controllers/filter.js"></script>
+<script type="text/javascript" src="/js/test.js"></script>
+<script type="text/javascript" src="/js/controllers/table.js"></script>
+</body>
+</html>
